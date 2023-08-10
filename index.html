@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>ISE unit converter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
+          <img src="https://mdbootstrap.com/img/Logo/mdb-transaprent-noshadows.png" height="16" alt="" loading="lazy"
+            style="margin-top: -3px;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </Li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">About</a>
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">About</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Created by <a href="https://github.com/ematt" target="_blank">Vlad Tuhut</a> //
+                        Fork me on <a href="https://github.com/ematt/ise_unit_converter" target="_blank"><i
+                            class="fab fa-github"></i></a></p>
+                      <p>
+                      <h6 class="text-muted">Thanks to:</h6>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+                        </li>
+                        <li class="list-group-item"><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+                      </ul>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="https://github.com/ematt/ise_unit_converter" rel="nofollow" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+            </Li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="text-center text-md-start">
+        <h4 class="mb-5"><strong>ISE unit converter</strong></h4>
+        <div class="row">
+          <form>
+            <div class="row g-3">
+              <div class="form-group col">
+                <label for="electrodeTypeFormControlSelect">ISE Electrode Preset</Label>
+                <select class="form-control" id="electrodeTypeFormControlSelect"
+                  onchange="onElectrodePresetSelection()">
+                  <option value="Ammonia">Ammonia</option>
+                  <option value="Bromide">Bromide</option>
+                  <option value="Cadmium">Cadmium</option>
+                  <option value="Calcium">Calcium</option>
+                  <option value="Carbon Dioxide">Carbon Dioxide</option>
+                  <option value="Chloride">Chloride</option>
+                  <option value="Cupric">Cupric</option>
+                  <option value="Cyanide">Cyanide</option>
+                  <option value="Flouride">Flouride</option>
+                  <option value="Iodide">Iodide</option>
+                  <option value="Lead">Lead</option>
+                  <option value="Nitrate">Nitrate</option>
+                  <option value="Potassium">Potassium</option>
+                  <option value="Silver">Silver</option>
+                  <option value="Sodium">Sodium</option>
+                  <option value="Sulfide">Sulfide</option>
+                  <option value="Custom">Custom</option>
+                </select>
+              </div>
+              <div class="form-group col">
+                <label for="electrodeMolarWeightFormControlInput">ISE Electrode Molar Weigh</Label>
+                <input type="text" class="form-control" id="electrodeMolarWeightFormControlInput"
+                  onchange="onElectrodeParamChange()">
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="form-group col">
+                <label for="inputValueFormControlInput">Value</Label>
+                <input type="text" class="form-control" id="inputValueFormControlInput" placeholder="Value to convert"
+                  onchange="onValueChange()">
+              </div>
+              <div class="form-group col">
+                <label for="inputValueUnitFormControlSelect">Unit</Label>
+                <select class="form-control" id="inputValueUnitFormControlSelect" onchange="onValueChange()">
+                  <option value="ppt">ppt</option>
+                  <option value="g/L">g/L</option>
+                  <option value="ppm">ppm</option>
+                  <option value="mg/L">mg/L</option>
+                  <option value="ppb">ppb</option>
+                  <option value="μg/L">μg/L</option>
+                  <option value="μg/mL">μg/mL</option>
+                  <option value="mg/mL">mg/mL</option>
+                  <option value="M">M</option>
+                  <option value="mol/L">mol/L</option>
+                  <option value="mmol/L">mmol/L</option>
+                  <option value="%w/v">%w/v</option>
+                  <option value="px">px</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row" id="resultContainer">
+          <!-- Results will be added here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    var electrodeData = {
+      "Ammonia": { "molarWeight": 17.030 },
+      "Bromide": { "molarWeight": 79.904 },
+      "Cadmium": { "molarWeight": 112.41 },
+      "Calcium": { "molarWeight": 40.08 },
+      "Carbon Dioxide": { "molarWeight": 44.0098 },
+      "Chloride": { "molarWeight": 35.453 },
+      "Cupric": { "molarWeight": 63.546 },
+      "Cyanide": { "molarWeight": 26.017 },
+      "Flouride": { "molarWeight": 18.9984 },
+      "Iodide": { "molarWeight": 126.9045 },
+      "Lead": { "molarWeight": 207.2 },
+      "Nitrate": { "molarWeight": 62.0045 },
+      "Potassium": { "molarWeight": 39.0983 },
+      "Silver": { "molarWeight": 107.868 },
+      "Sodium": { "molarWeight": 22.98977 },
+      "Sulfide": { "molarWeight": 32.06 },
+      "Custom": { "molarWeight": 10.00 },
+    };
+
+    function ise_converUnitInConc(value, fromUnit, molarWeight) {
+      switch (fromUnit) {
+        case "ppt":
+        case "g/L":
+          return (value * 1.0e+3);
+
+        case "ppm":
+        case "mg/L":
+        case "μg/mL":
+        default:
+          return value;
+
+        case "ppb":
+        case "μg/L":
+          return (value * 1.0e-3);
+
+        case "mg/mL":
+          return (value * 1.0e+3);
+
+        case "M":
+        case "mol/L":
+          return (value * molarWeight * 1.0e+3);
+        case "mmol/L":
+          return (value * molarWeight);
+        case "%w/v":
+          return (value * 1.0e+4);
+        case "px":
+          return Math.pow(10, -value) * 1.0e+3 * molarWeight;
+      }
+    }
+
+    function ise_convertConcInUnit(value, desiredUnit, molarWeight) {
+      switch (desiredUnit) {
+        case "ppt":
+        case "g/L":
+          return (value * 1.0e-3);
+
+        case "ppm":
+        case "mg/L":
+        case "μg/mL":
+        default:
+          return value;
+
+        case "ppb":
+        case "μg/L":
+          return (value * 1.0e3);
+
+        case "mg/mL":
+          return (value * 1.0e-3);
+
+        case "M":
+        case "mol/L":
+          return (value / molarWeight / 1.0e+3);
+        case "mmol/L":
+          return (value / molarWeight);
+        case "%w/v":
+          return (value * 1.0e-4);
+
+        case "px":
+          return -1 * Math.log10((value / (1.0e+3 * molarWeight)));
+      }
+    }
+
+    function viewTableUnitColumns(values) {
+      var html = '<table class="table table-hover"><thead><tr>'
+
+      $.each(values, function (index, value) {
+        html += '<th scope="col">' + value["unit"] + '</th>'
+      });
+
+      html += '</tr></thead><tbody>'
+
+      html += '<tr>'
+      $.each(values, function (index, value) {
+        html += '<td title="' + value["value"] + '">' + value["value"].toFixed(4) + '</td>'
+      });
+      html += '</tr>'
+
+      html += '<tr>'
+      $.each(values, function (index, value) {
+        html += '<td title="' + value["value"] + '">' + value["value"].toExponential(4) + '</td>'
+      });
+      html += '</tr>'
+
+      html += '</tbody></table>'
+
+      return html
+    }
+
+    function viewError(errorMsg) {
+      var html = '<div class="alert alert-light" role="alert">' + errorMsg + '</div>'
+
+      return html
+    }
+
+    function onElectrodePresetSelection() {
+      var electrode = $('#electrodeTypeFormControlSelect').val()
+
+      $('#electrodeMolarWeightFormControlInput').val('' + electrodeData[electrode]["molarWeight"])
+
+      onGenerate()
+    }
+
+    function onElectrodeParamChange() {
+      var electrode = $('#electrodeTypeFormControlSelect').val()
+      if (electrode != "Custom") {
+        $('#electrodeTypeFormControlSelect').val("Custom")
+      }
+
+      onGenerate()
+    }
+
+    function onValueChange() {
+      onGenerate()
+    }
+
+    function onGenerate() {
+      var electrode = $('#electrodeTypeFormControlSelect').val()
+      var unit = $('#inputValueUnitFormControlSelect').val()
+      var value = parseFloat($('#inputValueFormControlInput').val())
+
+      if (isNaN(value)) {
+        $('#resultContainer').html(viewError("Invalid values. Edit above"))
+        return
+      }
+
+      var valueConc = ise_converUnitInConc(value, unit, electrodeData[electrode]["molarWeight"])
+      var results = []
+      $('#inputValueUnitFormControlSelect option').each(function (index, option) {
+        var unit = option.value
+        var result = ise_convertConcInUnit(valueConc, unit, electrodeData[electrode]["molarWeight"])
+
+        var resultRecord = {
+          "unit": unit,
+          "value": result
+        };
+
+        results.push(resultRecord)
+      })
+
+      $('#resultContainer').html(viewTableUnitColumns(results))
+    }
+
+    $(document).ready(function () {
+      onGenerate();
+    });
+
+    var inputValueFormControlInputTypingTimer;
+    $('#inputValueFormControlInput').on('keyup', function () {
+      clearTimeout(inputValueFormControlInputTypingTimer);
+      inputValueFormControlInputTypingTimer = setTimeout(function () {
+        onGenerate();
+      }, 100);
+    });
+    $('#inputValueFormControlInput').on('keydown', function () {
+      clearTimeout(inputValueFormControlInputTypingTimer);
+    });
+
+    var electrodeMolarWeightFormControlInputTypingTimer;
+    $('#electrodeMolarWeightFormControlInput').on('keyup', function () {
+      clearTimeout(electrodeMolarWeightFormControlInputTypingTimer);
+      electrodeMolarWeightFormControlInputTypingTimer = setTimeout(function () {
+        onGenerate();
+      }, 100);
+    });
+    $('#electrodeMolarWeightFormControlInput').on('keydown', function () {
+      clearTimeout(electrodeMolarWeightFormControlInputTypingTimer);
+    });
+  </script>
+</body>
+
+</html>
